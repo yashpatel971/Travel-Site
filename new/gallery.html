@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>Paradise</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/gotop.js"></script>
+		<script src="js/backgroundchanger.js"></script>
+		<script src="js/validimi.js"></script>
+		<script src="js/storage.js"></script>
+
+		<style>
+			body {
+			  font-family: Verdana, serif;
+			}
+
+			* {
+			  box-sizing: border-box;
+			}
+
+			.row > .column {
+			  padding: 8px;
+			}
+
+			.row:after {
+			  content: "";
+			  display: table;
+			  clear: both;
+			}
+
+			.column {
+			  float: left;
+			  width: 25%;
+			}
+
+			/* The Modal (background) */
+			.modal {
+			  display: none;
+			  position: fixed;
+			  z-index: 1;
+			  padding-top: 100px;
+			  left: 0;
+			  top: 0;
+			  width: 100%;
+			  height: 100%;
+			  overflow: auto;
+			  background-color: black;
+			}
+
+			/* Modal Content */
+			.modal-content {
+			  position: relative;
+			  background-color: red;
+			  margin: auto;
+			  padding: 0;
+			  width: 90%;
+			  max-width: 1200px;
+			}
+
+			/* The Close Button */
+			.close {
+			  color: white;
+			  position: absolute;
+			  top: 10px;
+			  right: 25px;
+			  font-size: 35px;
+			  font-weight: bold;
+			}
+
+			.close:hover,
+			.close:focus {
+			  color: #999;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			.mySlides {
+			  display: none;
+			}
+
+			.cursor {
+			  cursor: pointer;
+			}
+
+			/* Next & previous buttons */
+			.prev,
+			.next {
+			  cursor: pointer;
+			  position: absolute;
+			  top: 50%;
+			  width: auto;
+			  padding: 16px;
+			  margin-top: -50px;
+			  color: white;
+			  font-weight: bold;
+			  font-size: 20px;
+			  transition: 0.6s ease;
+			  border-radius: 0 3px 3px 0;
+			  user-select: none;
+			  -webkit-user-select: none;
+			}
+
+			/* Position the "next button" to the right */
+			.next {
+			  right: 0;
+			  border-radius: 3px 0 0 3px;
+			}
+
+			/* On hover, add a black background color with a little bit see-through */
+			.prev:hover,
+			.next:hover {
+			  background-color: rgba(0, 0, 0, 0.8);
+			}
+
+			/* Number text (1/3 etc) */
+			.numbertext {
+			  color: #f2f2f2;
+			  font-size: 12px;
+			  padding: 8px 12px;
+			  position: absolute;
+			  top: 0;
+			}
+
+			img {
+			  margin-bottom: -4px;
+			}
+
+			.caption-container {
+			  text-align: center;
+			  background-color: black;
+			  padding: 2px 16px;
+			  color: white;
+			}
+
+			.demo {
+			  opacity: 0.6;
+			}
+
+			.active,
+			.demo:hover {
+			  opacity: 1;
+			}
+
+			img.hover-shadow {
+			  transition: 0.3s;
+			}
+
+			.hover-shadow:hover {
+			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			}
+</style>
+</head>
+<body>
+	<header id="background">
+		<div class="header">
+			<a href="index1.html">
+				<h1>PARADISE</h1>
+				<p style="color: #d2d2d2">--  Travel &amp; Tours  --</p>
+			</a>
+		</div>
+		<div class="header">
+			<nav class="navbar">
+				<ul>
+					<li><a href="udhetime.html">Trips</a></li>
+					<li><a href="destinacione.html">Special Destinations</a></li>
+					<li><a href="kontrata.html">Terms & Conditions</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+				
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div id="gallery">
+		<h2 style="text-align:center; margin-top: 0; color: white; font-size: 34px; font-style: verdana; font-weight: 500;">GALLERY</h2>
+		<div class="row">
+		  <div class="column">
+		    <img src="img/PC1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/T1.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/M1.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/M3.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/PC3.jpg" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/T3.jpg" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/M2.jpg" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/T2.jpg" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/i1.jpg" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/i2.jpg" style="width:100%" onclick="openModal();currentSlide(10)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/i3.jpg" style="width:100%" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
+		  </div>
+		  <div class="column">
+		    <img src="img/i5.jpg" style="width:100%" onclick="openModal();currentSlide(12)" class="hover-shadow cursor">
+		  </div>
+		</div>
+
+		<div id="myModal" class="modal">
+		  <span class="close cursor" onclick="closeModal()">&times;</span>
+		  <div class="modal-content">
+
+		    <div class="mySlides">
+		      <div class="numbertext">1 / 12</div>
+		      <img src="img/PC1.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">2 / 12</div>
+		      <img src="img/T1.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">3 / 12</div>
+		      <img src="img/M1.jpg" style="width:100%">
+		    </div>
+		    
+		    <div class="mySlides">
+		      <div class="numbertext">4 / 12</div>
+		      <img src="img/M3.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">5 / 12</div>
+		      <img src="img/PC3.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">6 / 12</div>
+		      <img src="img/T3.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">7 / 12</div>
+		      <img src="img/M2.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">8 / 12</div>
+		      <img src="img/T2.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">9 / 12</div>
+		      <img src="img/i1.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">10 / 12</div>
+		      <img src="img/i2.jpg" style="width:100%" style="height:120%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">11 / 12</div>
+		      <img src="img/i3.jpg" style="width:100%">
+		    </div>
+
+		    <div class="mySlides">
+		      <div class="numbertext">12 / 12</div>
+		      <img src="img/i5.jpg" style="width:100%">
+		    </div>
+
+		    
+		    
+		    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+		    <div class="caption-container">
+		      <p id="caption"></p>
+		    </div>
+
+
+		    <div class="column">
+		      <img class="demo cursor" src="img/PC1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Punta Cana - Republika Domenicane">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/T1.jpg" style="width:100%" onclick="currentSlide(2)" alt="Thailand">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/M1.jpg" style="width:100%" onclick="currentSlide(3)" alt="Maldive">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/M3.jpg" style="width:100%" onclick="currentSlide(4)" alt="Maldive">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/PC3.jpg" style="width:100%" onclick="currentSlide(5)" alt="Punta Cana - Republika Domenicane">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/T3.jpg" style="width:100%" onclick="currentSlide(6)" alt="Thailand">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/M2.jpg" style="width:100%" onclick="currentSlide(7)" alt="Maldive">
+		    </div>
+		    <div class="column">
+		      <img class="demo cursor" src="img/T2.jpg" style="width:100%" onclick="currentSlide(8)" alt="Tajland">
+		    </div>
+
+		    <div class="column">
+		      <img class="demo cursor" src="img/i1.jpg" style="width:100%" onclick="currentSlide(9)" alt="Thailand">
+		    </div>
+
+		    <div class="column">
+		      <img class="demo cursor" src="img/i2.jpg" style="width:100%" onclick="currentSlide(10)" alt="Maldive">
+		    </div>
+
+		    <div class="column">
+		      <img class="demo cursor" src="img/i3.jpg" style="width:100%" onclick="currentSlide(11)" alt="Paris">
+		    </div>
+
+		    <div class="column">
+		      <img class="demo cursor" src="img/i5.jpg" style="width:100%" onclick="currentSlide(12)" alt="Rome">
+		    </div>
+		  </div>
+		</div>
+	</div>
+	
+	<div id="div3">
+		<div class="block">
+			<h3>Contact us now !</h3>
+			<form id="form" onsubmit="return validimi(form)" action="http://www.randyconnolly.com/tests/process.php">
+				<table>
+					<tr>
+						<td>
+							<p>
+								<label>Name and Surname:</label><br>
+								<input type="text" name="name" size="30">
+							</p>
+						</td>
+						<td >
+								<p>
+									<label>E-mail:</label><br>
+									<input type="email" name="email" size="30"></br>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							
+							<td colspan="2">
+								<p>
+								<label>Message:</label><br>
+								<textarea name="description" rows="6" cols="62"></textarea>
+							</p>
+							</td>
+					</tr>
+	
+					<tr>
+						<td>
+							<div>
+								<input type="submit" value="Submit">
+								<input type="reset" value="Reset">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
+			<div class="block" style="float: right;">
+				<div>
+					<h3>Address</h3>
+					<p class="overline">
+						We are located at<br><br>
+						Safal Square<br><br>
+		                No.15<br><br>
+		                Mumbai 400051
+					</p>
+				</div>
+				<div>
+					<h3>Contact</h3>
+					<p class="overline">
+					 	Tel(1): 9714457774  <br><br>
+					 	Tel(2): 8980766467  <br><br>
+					 	E-mail: info@paradise.com <br><br>
+					 	 <br>
+					 	
+					</p>
+				</div>
+				<div>
+					<h3>Follow us on</h3>
+					<p class="overline">
+						Facebook:  <a href="http://www.facebook.com" target="_blank">
+								 	<img class="socialnetwork" src="img/facebook.svg">
+								   </a><br><br>
+						Twitter:   <a href="http://www.twitter.com" target="_blank">
+									<img class="socialnetwork" src="img/twitter.svg">
+								   </a><br><br>
+						Instagram: <a href="http://www.instagram.com" target="_blank">
+									<img class="socialnetwork" src="img/instagram.svg">
+								   </a><br><br>
+						Pinterest: <a href="http://www.pinterest.com" target="_blank">
+									<img class="socialnetwork" src="img/pinterest.svg">
+							   	   </a>
+					</p>
+				</div>
+			<form id="forma2" onsubmit="return validimi2(forma2)" action="http://www.randyconnolly.com/tests/process.php">
+				<p>
+					<label for="email">Check out every offers»</label>
+					<input type="email" name="email" size="30" placeholder=" Enter your E-mail">
+					<button type="submit">GO</button>
+				</p>
+			</form>	
+			</div>
+			<div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25195.26714804822!2d72.82827130109939!3d22.626581661733113!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5074fe9e0c1c8bd!2sCharotar%20University%20of%20Science%20and%20Technology%20(CHARUSAT)!5e0!3m2!1sen!2sin!4v1583244088094!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe> frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net">wordpres</a></div><style>.mapouter{text-align:right;height:500px;width:1000px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:1000px;}</style>
+			</div>
+				
+	</div>
+	<footer>
+		<p>Copyright &COPY; 2019 Parardise - All Rights Reserved</p>
+		<p>Founder :Code Pirates</p>
+	</footer>
+	<button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
+	<script type="text/javascript">
+		$(document).ready(function(){
+  		$("#hello").click(function(){
+    	$("#hello").hide("slow", function(){
+      	alert("You just ignored greeting");
+    });
+  });
+});
+	</script>
+</body>
+</html>
